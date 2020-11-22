@@ -182,7 +182,7 @@ function SyncedDom({ url, width, height }) {
         <div
             ref={ref}
             style={{
-                width,
+                maxWidth: width,
                 height,
                 margin: "2em 0",
                 //outline: "2px solid red"
