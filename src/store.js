@@ -5,7 +5,7 @@ let ids = 0
 const [useStore, api] = create((set, get) => {
     return {
         images: [],
-        addImage(url, width, height, x, y) {
+        addImage({url, width, height, x, y}) {
             let id = ids++
 
             set({
@@ -24,17 +24,13 @@ const [useStore, api] = create((set, get) => {
 
             return id
         },
-        updateImage(id, url, width, height, x, y) {
+        updateImage({id, ...values}) {
             set({
                 images: [
                     ...get().images.filter(i => i.id !== id),
                     {
-                        url,
-                        width,
-                        height,
-                        x,
-                        y,
-                        id
+                        ...get().images.find(i => i.id === id),
+                        ...values
                     }
                 ]
             })

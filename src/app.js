@@ -10,10 +10,11 @@ import WebglImage from "./WebglImage"
 import Home from "./pages/Home"
 import About from "./pages/About"
 
-//window.history.scrollRestoration = "manual"
+// might be neccessary to not allow scroll restore?
+window.history.scrollRestoration = "manual"
 
 function App() {
-    let images = useStore(i => i.images)
+    let images = useStore(i => i.images) 
 
     return (
         <>

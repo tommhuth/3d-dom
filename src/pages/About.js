@@ -3,6 +3,7 @@ import SyncedDom from "../SyncedDom"
 import { Only } from "../utils"
 import Page from "../Page"
 import { Link } from "@reach/router"
+import Scroller from "../Scroller"
 
 export default function About() {
     let [toggle, setToggle] = useState(false)
@@ -10,7 +11,7 @@ export default function About() {
     return (
         <Page>
             <h1>About</h1>
-            <Link to="/about"> to about</Link> or  <Link to="/">go home</Link>
+            <Link onClick={()=> Scroller.set(0)} to="/about"> to about</Link> or  <Link onClick={()=> Scroller.set(0)} to="/">go home</Link>
             <p>About tiam in efficitur nulla, in porta diam. Aliquam ac orci dapibus, accumsan massa sed, facilisis lacus. Donec vel mattis nisi. Curabitur consequat lacinia eros, ac tristique nisl volutpat id. Phasellus sed neque eget quam tincidunt vulputate a et tellus. Mauris tincidunt tempus turpis, eu viverra metus vehicula pharetra. Nulla purus mauris, eleifend a massa sit amet, laoreet viverra mauris. Morbi gravida egestas gravida. Nullam tempor nunc vel ligula varius, sed fermentum quam rhoncus. Sed nec justo ac velit ultricies semper vitae quis risus.</p>
 
             <SyncedDom
@@ -48,6 +49,8 @@ export default function About() {
                     url="https://images.unsplash.com/photo-1605014093414-29b156556886?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2167&q=80"
                 />
             </div>
+
+            <Link onClick={()=> Scroller.set(0)} to="/about"> to about</Link> or  <Link onClick={()=> Scroller.set(0)} to="/">go home</Link>
 
             <h2> Aliquam ac orci dapibus</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dui purus, egestas ac mattis id, congue quis elit. Nulla orci velit, semper nec cursus ut, bibendum sit amet turpis. Vestibulum et enim ut leo venenatis accumsan. Integer non sodales ante. Aliquam iaculis leo sed dictum mollis. Nam faucibus hendrerit dui et facilisis. Aenean eget pellentesque risus. Nulla facilisi. Nunc lobortis, turpis ullamcorper cursus rhoncus, est velit pharetra elit, quis fermentum odio diam a tellus. Integer ac sem sem. Suspendisse dui arcu, finibus eget justo ut, venenatis lobortis lorem. Nullam interdum orci id erat elementum, non egestas ante cursus. Nullam in suscipit velit, sit amet dapibus mauris. Sed finibus condimentum ex in suscipit. Nunc ut posuere velit. Mauris pharetra tempus ex a convallis.</p>

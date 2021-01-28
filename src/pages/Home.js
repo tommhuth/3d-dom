@@ -3,6 +3,7 @@ import React, {useState} from "react"
 import SyncedDom from "../SyncedDom"
 import {Only} from "../utils"
 import Page from "../Page"
+import Scroller from "../Scroller"
 
 export default function Home() {
     let [toggle, setToggle] = useState(false)
@@ -10,7 +11,7 @@ export default function Home() {
     return (
         <Page>
             <h1>Attempt at basic Webgl and DOM syncing</h1>
-            <Link to="/about"> to about</Link> or  <Link to="/">go home</Link>
+            <Link onClick={()=> Scroller.set(0)} to="/about"> to about</Link> or  <Link onClick={()=> Scroller.set(0)} to="/">go home</Link>
             <p>Etiam in efficitur nulla, in porta diam. Aliquam ac orci dapibus, accumsan massa sed, facilisis lacus. Donec vel mattis nisi. Curabitur consequat lacinia eros, ac tristique nisl volutpat id. Phasellus sed neque eget quam tincidunt vulputate a et tellus. Mauris tincidunt tempus turpis, eu viverra metus vehicula pharetra. Nulla purus mauris, eleifend a massa sit amet, laoreet viverra mauris. Morbi gravida egestas gravida. Nullam tempor nunc vel ligula varius, sed fermentum quam rhoncus. Sed nec justo ac velit ultricies semper vitae quis risus.</p>
             <p>Etiam in efficitur nulla, in porta diam. Aliquam ac orci dapibus, accumsan massa sed, facilisis lacus. Donec vel mattis nisi. Curabitur consequat lacinia eros, ac tristique nisl volutpat id. Phasellus sed neque eget quam tincidunt vulputate a et tellus. Mauris tincidunt tempus turpis, eu viverra metus vehicula pharetra. Nulla purus mauris, eleifend a massa sit amet, laoreet viverra mauris. Morbi gravida egestas gravida. Nullam tempor nunc vel ligula varius, sed fermentum quam rhoncus. Sed nec justo ac velit ultricies semper vitae quis risus.</p>
             <p>Etiam in efficitur nulla, in porta diam. Aliquam ac orci dapibus, accumsan massa sed, facilisis lacus. Donec vel mattis nisi. Curabitur consequat lacinia eros, ac tristique nisl volutpat id. Phasellus sed neque eget quam tincidunt vulputate a et tellus. Mauris tincidunt tempus turpis, eu viverra metus vehicula pharetra. Nulla purus mauris, eleifend a massa sit amet, laoreet viverra mauris. Morbi gravida egestas gravida. Nullam tempor nunc vel ligula varius, sed fermentum quam rhoncus. Sed nec justo ac velit ultricies semper vitae quis risus.</p>
@@ -41,6 +42,9 @@ export default function Home() {
                     />
                 </li>
             </ul>
+
+
+            <Link onClick={()=> Scroller.set(0)} to="/about"> to about</Link> or  <Link onClick={()=> Scroller.set(0)} to="/">go home</Link>
 
             <p>Etiam in efficitur nulla, in porta diam. Aliquam ac orci dapibus, accumsan massa sed, facilisis lacus. Donec vel mattis nisi. Curabitur consequat lacinia eros, ac tristique nisl volutpat id. Phasellus sed neque eget quam tincidunt vulputate a et tellus. Mauris tincidunt tempus turpis, eu viverra metus vehicula pharetra. Nulla purus mauris, eleifend a massa sit amet, laoreet viverra mauris. Morbi gravida egestas gravida. Nullam tempor nunc vel ligula varius, sed fermentum quam rhoncus. Sed nec justo ac velit ultricies semper vitae quis risus.</p>
 

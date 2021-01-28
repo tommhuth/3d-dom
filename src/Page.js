@@ -1,4 +1,4 @@
-import React, { useRef ,useState ,useEffect } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import useAnimationFrame from "use-animation-frame"
 import Scroller from "./Scroller"
 
@@ -10,12 +10,14 @@ export default function Page({ children }) {
         ref.current.style.transform = `translateY(-${Scroller.position.toFixed(1)}px)`
     })
 
-    useEffect(()=> {
-        let observer = new ResizeObserver(()=> {
+    useEffect(() => {
+        let observer = new ResizeObserver(() => {
             setContentHeight(ref.current.offsetHeight)
         })
 
-        observer.observe(ref.current, { attributes: false, childList: true, subtree: true })  
+        observer.observe(ref.current, { attributes: false, childList: true, subtree: true })
+
+        return () => observer.disconnect()
     }, [])
 
     return (

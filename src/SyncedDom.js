@@ -1,7 +1,5 @@
-
-import React, { useEffect, useMemo, useRef, useState } from "react" 
-import useStore from "./store"
-import Scroller from "./Scroller"
+import React, { useEffect, useRef } from "react"
+import useStore from "./store" 
 
 export default function SyncedDom({ url, width, height }) {
     let ref = useRef()
@@ -11,31 +9,39 @@ export default function SyncedDom({ url, width, height }) {
 
     useEffect(() => {
         let rect = ref.current.getBoundingClientRect()
-        let id = addImage(url, rect.width, rect.height, rect.x, rect.y) //  + Scroller.target
-        let tid
+        let id = addImage({
+            url,
+            width: rect.width,
+            height: rect.height,
+            x: rect.x,
+            y: rect.y + window.scrollY
+        }) 
         let update = () => {
-            let rect = ref.current.getBoundingClientRect()
+            let { x, y, width, height } = ref.current.getBoundingClientRect() 
 
-            updateImage(id, url, rect.width, rect.height, rect.x, rect.y ) //+ Scroller.target
+            updateImage({ id, width, height, x, y: y + window.scrollY }) 
         }
+        let tid
         let onResize = () => {
             clearTimeout(tid)
 
-            tid = setTimeout(update, 75)
+            tid = setTimeout(update, 20)
         }
-        let observer1 = new MutationObserver(update)
-        let observer2 = new ResizeObserver(update)
+        let mutations = new MutationObserver(update)
+        let resizes = new ResizeObserver(update)
 
-        observer1.observe(document.body, { attributes: false, childList: true, subtree: true }) 
-        observer2.observe(ref.current) 
+        mutations.observe(document.body, { attributes: false, childList: true, subtree: true })
+        resizes.observe(ref.current)
+        resizes.observe(window.document.body)
         window.addEventListener("resize", onResize)
 
         return () => {
-            window.removeEventListener("resize", onResize)
             removeImage(id)
+
             clearTimeout(tid)
-            observer1.disconnect()
-            observer2.disconnect()
+            window.removeEventListener("resize", onResize)
+            mutations.disconnect()
+            resizes.disconnect()
         }
     }, [])
 
