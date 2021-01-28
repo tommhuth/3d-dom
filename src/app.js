@@ -1,5 +1,8 @@
 import "../assets/styles/app.scss"
 
+// might be neccessary to not allow scroll restore?
+window.history.scrollRestoration = "manual"
+
 import React from "react"
 import ReactDOM from "react-dom"
 import { Vector3 } from "three"
@@ -10,8 +13,6 @@ import WebglImage from "./WebglImage"
 import Home from "./pages/Home"
 import About from "./pages/About"
 
-// might be neccessary to not allow scroll restore?
-window.history.scrollRestoration = "manual"
 
 function App() {
     let images = useStore(i => i.images) 
