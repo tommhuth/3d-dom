@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import useStore from "./store" 
+import Scroller from "./Scroller" 
 
 export default function SyncedDom({ url, width, height }) {
     let ref = useRef()
@@ -14,12 +15,12 @@ export default function SyncedDom({ url, width, height }) {
             width: rect.width,
             height: rect.height,
             x: rect.x,
-            y: rect.y + window.scrollY
+            y: rect.y + Scroller.position
         }) 
         let update = () => {
             let { x, y, width, height } = ref.current.getBoundingClientRect() 
 
-            updateImage({ id, width, height, x, y: y + window.scrollY }) 
+            updateImage({ id, width, height, x, y: y + Scroller.position }) 
         }
         let tid
         let onResize = () => {
