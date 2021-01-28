@@ -11,7 +11,7 @@ const app = express()
 app.use(compression())
 app.use(serveStatic(path.join(__dirname, "public"), { maxAge: "10 years"  }))
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "public/index.html"))
 })
 
