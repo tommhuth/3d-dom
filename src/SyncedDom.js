@@ -25,13 +25,13 @@ export default function SyncedDom({ url, width, height }) {
         let onResize = () => {
             clearTimeout(tid)
 
-            tid = setTimeout(update, 20)
+            //tid = setTimeout(update, 20)
         }
         let mutations = new MutationObserver(update)
         let resizes = new ResizeObserver(update)
 
         mutations.observe(document.body, { attributes: false, childList: true, subtree: true })
-        resizes.observe(ref.current)
+        //resizes.observe(ref.current)
         resizes.observe(window.document.body)
         window.addEventListener("resize", onResize)
 
