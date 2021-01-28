@@ -9,7 +9,7 @@ export default class Scroller {
 
         let update = () => {
             if (this.position !== this.target) { 
-                this.position += (this.target - this.position) * .1
+                this.position += (this.target - this.position) * .15
 
                 if (Math.abs(this.target - this.position) < .25) {
                     this.position = this.target
